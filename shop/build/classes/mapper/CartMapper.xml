@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:名称空间 一般命名规则就是该xml所在的包路径.xml的名称 -->
+<mapper namespace="dao.CartDao">
+	<select id="list" parameterType="entity.Cart" resultType="entity.Cart">
+		select id,name,num,price from t_cart
+	</select>
+
+	<update id="updateCart" parameterType="entity.Cart">
+		update t_cart set num=#{num},price=#{price}
+		where id=#{id}
+	</update>
+
+	<select id="deleteCart" parameterType="entity.Cart">
+		delete from t_cart
+		where id= #{id}
+	</select>
+
+	<select id="clearCart" parameterType="entity.Cart">
+		delete from t_cart
+	</select>
+	
+	<insert id="addCart" parameterType="entity.Cart">
+		insert into t_cart(name,num,price)
+		values(#{name},#{num},#{price})
+	</insert>
+</mapper>

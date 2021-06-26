@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:名称空间 一般命名规则就是该xml所在的包路径.xml的名称 -->
+<mapper namespace="dao.OrderDao">
+	<insert id="addOrder" parameterType="entity.Order">
+		insert into t_order(id,date)
+		values(#{id},#{date})
+	</insert>
+	
+	<select id="list" parameterType="entity.Order" resultType="entity.Order">
+		select id,date from t_order
+	</select>
+	
+	<insert id="addOrderandcart" parameterType="entity.Orderandcart">
+		insert into t_orderandcart(id,name,num,price)
+		values(#{id},#{name},#{num},#{price})
+	</insert>
+	
+	<select id="order_detail" parameterType="entity.Orderandcart" resultType="entity.Orderandcart">
+		select id,name,num,price from t_orderandcart
+		where id=#{id}
+	</select>
+</mapper>
